@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Longform — A Home for Your Writing</title>
+    <style>
+      /* Paper, not screen. The page background is warm cream so there is never a
+         white flash around the app root. */
+      html, body { margin: 0; background-color: #FBF7EF; }
+
+      /* One typographic foundation: the whole app is set in a book serif. Scoped
+         to #root (id specificity) so it wins over @hanzo/gui's atomic font class
+         deterministically — there is no react-native style prop for a font-family
+         stack, so this is the single honest place for it. */
+      #root, #root * {
+        font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
+      }
+
+      /* Drop-cap for the opening paragraph of a reading column. A true
+         ::first-letter effect has no react-native style-prop equivalent, so it
+         lives here and is opted into with className="lf-drop". */
+      #root .lf-drop { display: block; }
+      #root .lf-drop::first-letter {
+        float: left;
+        font-size: 3.55em;
+        line-height: 0.68;
+        padding: 0.02em 0.09em 0 0;
+        font-weight: 700;
+        color: #26221E;
+      }
+
+      /* Reading-column legibility niceties that only CSS expresses. */
+      #root .lf-read {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
